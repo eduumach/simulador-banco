@@ -19,6 +19,15 @@ public class Conta {
         }
     }
 
+    public void transferencia(Conta destino, double valor) throws Exception {
+        if (this.saldo >= valor) {
+            this.saque(valor);
+            destino.deposito(valor);
+        } else {
+            throw new Exception("Saldo insuficiente.");
+        }
+    }
+
     public String extrato(){
         this.extrato = this.extrato + "\n" + saldo;
         return this.extrato;

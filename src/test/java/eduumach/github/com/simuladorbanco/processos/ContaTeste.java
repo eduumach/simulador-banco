@@ -25,11 +25,21 @@ public class ContaTeste {
     }
 
     @Test
-    void saldo() throws  Exception{
+    void saldo() throws Exception{
         Conta conta = new Conta();
         conta.deposito(100);
 
         assertEquals(100, conta.saldo());
+    }
+
+    @Test
+    void transferencia() throws Exception{
+        Conta conta1 = new Conta();
+        Conta conta2 = new Conta();
+        conta1.deposito(100);
+        conta1.transferencia(conta2, 50);
+        System.out.println(conta1.saldo());
+        System.out.println(conta2.saldo());
     }
 
     @Test
