@@ -1,6 +1,6 @@
-package eduumach.github.com.simuladorbanco.processos;
+package eduumach.github.com.simuladorbanco.model;
 
-import eduumach.github.com.simuladorbanco.processos.Conta;
+import eduumach.github.com.simuladorbanco.model.Conta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

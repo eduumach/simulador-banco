@@ -1,4 +1,4 @@
-package eduumach.github.com.simuladorbanco.processos;
+package eduumach.github.com.simuladorbanco.model;
 
 public class Conta {
     private double saldo;
