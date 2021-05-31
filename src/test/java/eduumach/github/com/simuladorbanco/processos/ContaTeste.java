@@ -12,7 +12,7 @@ public class ContaTeste {
         conta.deposito(2);
         conta.deposito(3);
 
-        assertEquals(5, conta.getSaldo());
+        assertEquals(5, conta.saldo());
     }
 
     @Test
@@ -21,7 +21,7 @@ public class ContaTeste {
         conta.deposito(500);
         conta.saque(400);
 
-        assertEquals(100, conta.getSaldo());
+        assertEquals(100, conta.saldo());
     }
 
     @Test
