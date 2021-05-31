@@ -7,7 +7,6 @@ public class Conta {
     public void deposito(double a) {
         this.extrato = this.extrato + "\nDeposito: " + a;
         this.saldo += a;
-
     }
 
     public void saque(double a) throws Exception {
