@@ -28,11 +28,12 @@ public class Conta {
     }
 
     public String extrato(){
-        this.extrato = this.extrato + "\n" + saldo;
-        return this.extrato;
+        String mostrar = this.extrato + "\n Seu saldo final é de R$:" + saldo;
+        return mostrar;
     }
 
     public double saldo(){
         return this.saldo;
     }
+
 }
