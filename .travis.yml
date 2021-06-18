@@ -5,4 +5,8 @@ jdk:
 
 script:
   - mvn clean install
+  - mvn cobertura:cobertura
   - mvn clean test -Dtest=eduumach.github.com.simuladorbanco.model.ContaTeste
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
