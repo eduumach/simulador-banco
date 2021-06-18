@@ -1,3 +1,9 @@
 language: java
+
+jdk:
+  - oraclejdk8
+
 script:
+  - java --version
+  - mvn clean install
   - mvn clean test -Dtest=eduumach.github.com.simuladorbanco.model.ContaTeste
