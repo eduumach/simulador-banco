@@ -1,5 +1,5 @@
 language: java
 script:
-  - mvn test
+  - mvn clean test -Dtest=eduumach.github.com.simuladorbanco.model.ContaTeste
 jdk:
   - oraclejdk8
