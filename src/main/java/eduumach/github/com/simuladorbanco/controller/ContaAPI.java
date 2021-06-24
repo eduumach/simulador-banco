@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
-@RequestMapping("/conta")
+@RequestMapping("/contas")
 public class ContaAPI {
     private ArrayList<Cliente> cliente = new ArrayList<Cliente>();
     private ArrayList<String> cpf = new ArrayList<String>();
@@ -27,33 +27,33 @@ public class ContaAPI {
         }
     }
 
-    @PostMapping("/{id}/deposito/{valor}")
-    public String deposito(@PathVariable("id") int conta, @PathVariable("valor") double valor){
-        cliente.get(conta).deposito(valor);
-        return "Valor adcionado: " + valor;
+    @PostMapping("/deposito/{id}/")
+    public String deposito(@RequestBody Dados dados, @PathVariable("id") int id){
+        cliente.get(id).deposito(dados.getValor());
+        return "Valor adcionado: " + dados.getValor();
     }
 
-    @PostMapping("/{id}/saque/{valor}")
-    public String saque(@PathVariable("id") int conta, @PathVariable("valor") double valor) throws Exception {
-        cliente.get(conta).saque(valor);
-        return "Saque de: R$"+ valor;
+    @PostMapping("/saque/{id}/")
+    public String saque(@RequestBody Dados dados, @PathVariable("id") int id) throws Exception {
+        cliente.get(id).saque(dados.getValor());
+        return "Saque de: R$"+ dados.getValor();
     }
 
-    @PostMapping("/{id-c}/transfrencia/{id-d}/{valor}")
-    public String transferencia(@PathVariable("id-c") int contaC,@PathVariable("id-d") int contaD, @PathVariable("valor") double valor) throws Exception {
-        Cliente conta = cliente.get(contaD);
-        cliente.get(contaC).transferencia(conta, valor);
-        return "Transferecia para: "+cliente.get(contaC).dados()+ " para: " +cliente.get(contaD).dados() +" no valor de: R$"+valor;
+    @PostMapping("/transfrencias/{id}/")
+    public String transferencia(@RequestBody Dados dados, @PathVariable("id") int id) throws Exception {
+        Cliente contaDestino = cliente.get(dados.getIdDestino());
+        cliente.get(id).transferencia(contaDestino, dados.getValor());
+        return "Transferecia para: "+cliente.get(dados.getId()).dados()+ " para: " +cliente.get(dados.getIdDestino()).dados() +" no valor de: R$"+dados.getValor();
     }
 
-    @GetMapping("/{id}/extrato")
-    public String extrato(@PathVariable("id") int conta) {
-        return cliente.get(conta).extrato();
+    @GetMapping("/extrato/{id}/")
+    public String extrato(@PathVariable("id") int id) {
+        return cliente.get(id).extrato();
     }
 
-    @GetMapping("/{id}/saldo")
-    public String saldo(@PathVariable("id") int conta){
-        double saldo = cliente.get(conta).saldo();
+    @GetMapping("/saldo/{id}/")
+    public String saldo(@PathVariable("id") int id){
+        double saldo = cliente.get(id).saldo();
         return "Seu saldo é: " + saldo;
     }
 }
