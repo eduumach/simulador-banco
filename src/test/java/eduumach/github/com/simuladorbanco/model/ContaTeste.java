@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ContaTeste {
+ class ContaTeste {
     @Test
     void deposito() throws Exception{
         Conta conta = new Conta();
