@@ -50,10 +50,10 @@ POST /contas/saque/${id}
 | :--------- | :------- | :------------------------------ |
 | `valor`    | `double` | **Obrigatorio**. Valor de saque |
 
-#### POST Transfrencia
+#### POST Transferencia
 
 ```
-POST /contas/transfrencias/${id}
+POST /contas/transferencia/${id}
 ```
 
 | Parametros | Tipo     | Descrição                              | 

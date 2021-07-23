@@ -34,8 +34,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     @Test
     void transferencia() throws Exception{
-        Conta conta1 = new Conta();
-        Conta conta2 = new Conta();
+        Cliente conta1 = new Cliente();
+        Cliente conta2 = new Cliente();
         conta1.deposito(100);
         conta1.transferencia(conta2, 50);
         System.out.println(conta1.saldo());

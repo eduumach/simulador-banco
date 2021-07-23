@@ -50,7 +50,7 @@ public class ContaAPI {
         return "Saque de: R$"+ dados.getValor();
     }
 
-    @PostMapping("/transfrencias/{id}")
+    @PostMapping("/transferencia/{id}")
     public String transferencia(@RequestBody Dados dados, @PathVariable("id") int id) throws Exception {
         Cliente contaDestino = cliente.get(dados.getIdDestino());
         cliente.get(id).transferencia(contaDestino, dados.getValor());

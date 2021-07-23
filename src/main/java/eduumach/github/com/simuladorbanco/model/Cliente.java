@@ -9,6 +9,13 @@ public class Cliente extends Conta {
         this.cpf = cpf;
     }
 
+    public Cliente() {
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
     public String dados(){
         return "Nome: " + this.nome + " CPF: " + this.cpf;
     }
