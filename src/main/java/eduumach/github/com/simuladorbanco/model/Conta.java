@@ -23,15 +23,10 @@ public class Conta {
 
     }
 
-    public void deposito(double valor, Cliente destino){
-            this.saldo += valor;
-        this.extrato = this.extrato + "\nTranferencia recebida para: " + destino.getNome() + " no valor: R$" + valor;
-    }
-
     public void transferencia(Cliente destino, double valor) throws Exception {
         if (this.saldo >= valor) {
             this.saque(valor, destino);
-            destino.deposito(valor,destino);
+            destino.getConta().deposito(valor);
         } else {
             throw new Exception("Saldo insuficiente.");
         }
