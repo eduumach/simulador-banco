@@ -2,43 +2,37 @@ package eduumach.github.com.simuladorbanco.model;
 
 public class Conta {
     private double saldo;
-    private String extrato = "Seu extrato:";
+    private String totalExtrato = "Seu extrato:";
 
-    public void deposito(double a) {
-        this.extrato = this.extrato + "\nDeposito: " + a;
-        this.saldo += a;
+    public void deposito(double valor) {
+        this.totalExtrato = this.totalExtrato + "\nDeposito: " + valor;
+        this.saldo += valor;
     }
 
-    public void saque(double a) throws Exception {
-        if(this.saldo >= a) {
-            this.extrato = this.extrato + "\nSaque: " + a;
-            this.saldo -= a;
+    public void saque(double valor) {
+        if(this.saldo >= valor) {
+            this.totalExtrato = this.totalExtrato + "\nSaque: " + valor;
+            this.saldo -= valor;
         }else{
-            throw new Exception("Não foi possivel fazer o saque.");
+            System.out.println("Não foi possivel fazer o saque.");
         }
     }
-    public void saque(double valor, Cliente destino){
-        this.saldo -= valor;
-        this.extrato = this.extrato + "\nTranferencia enviada para: " + destino.getNome() + " no valor: R$" + valor;
 
-    }
-
-    public void transferencia(Cliente destino, double valor) throws Exception {
+    public void transferencia(Cliente clienteDestino, double valor) {
         if (this.saldo >= valor) {
-            this.saque(valor, destino);
-            destino.getConta().deposito(valor);
+            this.saldo -= valor;
+            this.totalExtrato = this.totalExtrato + "\nTranferencia enviada para: " + clienteDestino.getNome() + " no valor: R$" + valor;
+            clienteDestino.getConta().deposito(valor);
         } else {
-            throw new Exception("Saldo insuficiente.");
+            System.out.println("Saldo insuficiente.");
         }
     }
 
-    public String extrato(){
-        String mostrar = this.extrato + "\n Seu saldo final é de R$:" + saldo;
-        return mostrar;
+    public String extratoTotal(){
+        return this.totalExtrato + "\n Seu saldo final é de R$:" + saldo;
     }
 
-    public double saldo(){
-        return this.saldo;
+    public double getSaldo() {
+        return saldo;
     }
-
 }

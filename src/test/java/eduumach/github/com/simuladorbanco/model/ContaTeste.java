@@ -1,6 +1,5 @@
 package eduumach.github.com.simuladorbanco.model;
 
-import eduumach.github.com.simuladorbanco.model.Conta;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         conta.deposito(2);
         conta.deposito(3);
 
-        assertEquals(5, conta.saldo());
+        assertEquals(5, conta.getSaldo());
     }
 
     @Test
@@ -21,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         conta.deposito(500);
         conta.saque(400);
 
-        assertEquals(100, conta.saldo());
+        assertEquals(100, conta.getSaldo());
     }
 
     @Test
@@ -29,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         Conta conta = new Conta();
         conta.deposito(100);
 
-        assertEquals(100, conta.saldo());
+        assertEquals(100, conta.getSaldo());
     }
 
     @Test
@@ -38,8 +37,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         Cliente conta2 = new Cliente();
         conta1.getConta().deposito(100);
         conta1.getConta().transferencia(conta2, 50);
-        System.out.println(conta1.getConta().saldo());
-        System.out.println(conta2.getConta().saldo());
+        System.out.println(conta1.getConta().getSaldo());
+        System.out.println(conta2.getConta().getSaldo());
     }
 
     @Test
@@ -49,7 +48,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         conta.deposito(100);
         conta.saque(10);
         conta.saque(40);
-        System.out.println(conta.extrato());
+        System.out.println(conta.extratoTotal());
 
     }
 
@@ -60,7 +59,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         try {
             conta.saque(150);
         } catch (Exception a){
-            System.out.println(conta.saldo() + "\n" + a);
+            System.out.println(conta.getSaldo() + "\n" + a);
         }
     }
 
