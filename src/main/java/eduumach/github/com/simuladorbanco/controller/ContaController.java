@@ -30,8 +30,8 @@ public class ContaController {
         return new ResponseEntity<>(contaResponse, HttpStatus.CREATED);
     }
 
-    @PostMapping("/associaconta")
-    public ResponseEntity<ClienteResponse> associaConta(@RequestBody ClienteRequest clienteRequest){
+    @PostMapping("/associacliente")
+    public ResponseEntity<ClienteResponse> associaCliente(@RequestBody ClienteRequest clienteRequest){
         ClienteResponse clienteResponse = clienteService.associaConta(clienteRequest);
         return new ResponseEntity<>(clienteResponse, HttpStatus.CREATED);
     }
