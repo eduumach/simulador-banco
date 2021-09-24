@@ -9,9 +9,12 @@ public class ContaResponse {
     public ContaResponse() {
     }
 
-    public ContaResponse(Long id, double saldo, String extrato) {
+    public ContaResponse(Long id, String extrato) {
         this.id = id;
-        this.saldo = saldo;
+        this.extrato = extrato;
+    }
+
+    public ContaResponse(String extrato) {
         this.extrato = extrato;
     }
 
