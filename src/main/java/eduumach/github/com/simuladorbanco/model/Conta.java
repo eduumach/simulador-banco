@@ -4,11 +4,13 @@ public class Conta {
     private double saldo;
     private String extrato = "Seu extrato:";
 
+    //operação
     public void deposito(double a) {
         this.extrato = this.extrato + "\nDeposito: " + a;
         this.saldo += a;
     }
 
+    //Operação
     public void saque(double a) throws Exception {
         if(this.saldo >= a) {
             this.extrato = this.extrato + "\nSaque: " + a;
@@ -23,11 +25,13 @@ public class Conta {
 
     }
 
+    //operação
     public void deposito(double valor, Cliente destino){
             this.saldo += valor;
         this.extrato = this.extrato + "\nTranferencia recebida para: " + destino.getNome() + " no valor: R$" + valor;
     }
 
+    //Operação
     public void transferencia(Cliente destino, double valor) throws Exception {
         if (this.saldo >= valor) {
             this.saque(valor, destino);
@@ -37,11 +41,13 @@ public class Conta {
         }
     }
 
+    //Conta
     public String extrato(){
         String mostrar = this.extrato + "\n Seu saldo final é de R$:" + saldo;
         return mostrar;
     }
 
+    //Conta
     public double saldo(){
         return this.saldo;
     }
