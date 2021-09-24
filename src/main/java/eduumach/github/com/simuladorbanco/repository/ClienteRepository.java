@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
-
+    ClienteEntity findByCpf(String cpf);
 }
