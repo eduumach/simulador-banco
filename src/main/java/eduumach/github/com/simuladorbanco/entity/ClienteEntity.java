@@ -1,6 +1,11 @@
 package eduumach.github.com.simuladorbanco.entity;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "cliente")
@@ -17,8 +22,8 @@ public class ClienteEntity {
     @Column(name = "nome")
     private String nome;
 
-    @OneToOne
-    @JoinColumn(name="conta_id", referencedColumnName="id",nullable=false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="conta_id", referencedColumnName="id")
     private ContaEntity conta;
 
     public ClienteEntity() {
