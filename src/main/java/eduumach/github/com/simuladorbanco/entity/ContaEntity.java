@@ -17,12 +17,23 @@ public class ContaEntity {
     @Column(name = "extrato")
     private String extrato;
 
+    @OneToOne(mappedBy = "conta")
+    private ClienteEntity cliente;
+
     public ContaEntity() {
     }
 
     public ContaEntity(double saldo, String extrato) {
         this.saldo = saldo;
         this.extrato = extrato;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
 
     public Long getId() {
