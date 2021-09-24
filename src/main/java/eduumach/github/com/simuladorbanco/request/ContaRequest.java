@@ -2,30 +2,30 @@ package eduumach.github.com.simuladorbanco.request;
 
 public class ContaRequest {
 
-    private double saldo;
-    private String extrato;
+    private double valorTranferencia;
+    private Long idDestino;
 
     public ContaRequest() {
     }
 
-    public ContaRequest(double saldo, String extrato) {
-        this.saldo = saldo;
-        this.extrato = extrato;
+    public ContaRequest(double valorTranferencia, Long idDestino) {
+        this.valorTranferencia = valorTranferencia;
+        this.idDestino = idDestino;
     }
 
-    public double getSaldo() {
-        return saldo;
+    public double getValorTranferencia() {
+        return valorTranferencia;
     }
 
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
+    public void setValorTranferencia(double valorTranferencia) {
+        this.valorTranferencia = valorTranferencia;
     }
 
-    public String getExtrato() {
-        return extrato;
+    public Long getIdDestino() {
+        return idDestino;
     }
 
-    public void setExtrato(String extrato) {
-        this.extrato = extrato;
+    public void setIdDestino(Long idDestino) {
+        this.idDestino = idDestino;
     }
 }
