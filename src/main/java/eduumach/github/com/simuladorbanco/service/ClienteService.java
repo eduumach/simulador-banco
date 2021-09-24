@@ -14,6 +14,8 @@ public class ClienteService {
 
     @Autowired
     ClienteRepository clienteRepository;
+
+    @Autowired
     ContaRepository contaRepository;
 
     public ClienteResponse criar(ClienteRequest clienteRequest){
@@ -26,14 +28,15 @@ public class ClienteService {
     }
 
     public ClienteResponse associaConta(ClienteRequest clienteRequest){
-        if(contaRepository.existsById(clienteRequest.getIdConta())){
+        if(!contaRepository.existsById(clienteRequest.getIdConta())){
             throw new RuntimeException("Conta não existe.");
-        }else if (clienteRepository.findByCpf(clienteRequest.getCpf()) != null){
+        }else if (clienteRepository.findByCpf(clienteRequest.getCpf()) == null){
             throw  new RuntimeException("Cria um cliente.");
         }
         ContaEntity contaEntity = contaRepository.getById(clienteRequest.getIdConta());
         ClienteEntity clienteEntity = clienteRepository.findByCpf(clienteRequest.getCpf());
         clienteEntity.setConta(contaEntity);
+        clienteEntity = clienteRepository.save(clienteEntity);
         return new ClienteResponse(clienteEntity.getId(), clienteEntity.getCpf(), clienteEntity.getNome(), contaEntity.getId());
     }
 }

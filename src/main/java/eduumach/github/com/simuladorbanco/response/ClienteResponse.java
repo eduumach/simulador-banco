@@ -27,6 +27,14 @@ public class ClienteResponse {
         this.idConta = idConta;
     }
 
+    public Long getIdConta() {
+        return idConta;
+    }
+
+    public void setIdConta(Long idConta) {
+        this.idConta = idConta;
+    }
+
     public Long getId() {
         return id;
     }
