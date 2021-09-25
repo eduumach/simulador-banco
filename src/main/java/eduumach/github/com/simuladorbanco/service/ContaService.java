@@ -16,6 +16,7 @@ public class ContaService {
 
     public ContaResponse criar(){
         ContaEntity contaEntity = new ContaEntity();
+        contaEntity.setExtrato("Seu extrato é: ");
         contaEntity = contaRepository.save(contaEntity);
         return new ContaResponse(contaEntity.getId(), contaEntity.getExtrato());
     }
