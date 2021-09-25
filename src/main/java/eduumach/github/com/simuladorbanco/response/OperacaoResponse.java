@@ -1,15 +1,23 @@
 package eduumach.github.com.simuladorbanco.response;
 
 public class OperacaoResponse {
-    private String cpf;
+    private Long conta;
     private String extrato;
 
-    public String getCpf() {
-        return cpf;
+    public OperacaoResponse() {
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public OperacaoResponse(Long conta, String extrato) {
+        this.conta = conta;
+        this.extrato = extrato;
+    }
+
+    public Long getConta() {
+        return conta;
+    }
+
+    public void setConta(Long conta) {
+        this.conta = conta;
     }
 
     public String getExtrato() {

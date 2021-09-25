@@ -4,24 +4,38 @@ import java.util.Date;
 
 public class OperacaoRequest {
 
-    private String cpf;
-    private String cpfDestino;
+    private Long conta;
+    private Long contaDestino;
     private double valor;
 
-    public String getCpf() {
-        return cpf;
+    public OperacaoRequest() {
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public OperacaoRequest(Long conta, double valor) {
+        this.conta = conta;
+        this.valor = valor;
     }
 
-    public String getCpfDestino() {
-        return cpfDestino;
+    public OperacaoRequest(Long conta, Long contaDestino, double valor) {
+        this.conta = conta;
+        this.contaDestino = contaDestino;
+        this.valor = valor;
     }
 
-    public void setCpfDestino(String cpfDestino) {
-        this.cpfDestino = cpfDestino;
+    public Long getConta() {
+        return conta;
+    }
+
+    public void setConta(Long conta) {
+        this.conta = conta;
+    }
+
+    public Long getContaDestino() {
+        return contaDestino;
+    }
+
+    public void setContaDestino(Long contaDestino) {
+        this.contaDestino = contaDestino;
     }
 
     public double getValor() {
