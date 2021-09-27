@@ -3,13 +3,23 @@ package eduumach.github.com.simuladorbanco.response;
 public class OperacaoResponse {
     private Long conta;
     private String extrato;
+    private double saldo;
 
     public OperacaoResponse() {
     }
 
-    public OperacaoResponse(Long conta, String extrato) {
+    public OperacaoResponse(Long conta, String extrato, double saldo) {
         this.conta = conta;
         this.extrato = extrato;
+        this.saldo = saldo;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public Long getConta() {

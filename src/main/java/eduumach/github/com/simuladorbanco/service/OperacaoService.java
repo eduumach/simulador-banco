@@ -23,7 +23,7 @@ public class OperacaoService {
         contaEntity.setSaldo(saldo);
         contaEntity.setExtrato(extrato);
         contaRepository.save(contaEntity);
-        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato());
+        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
     }
 
     public OperacaoResponse saque(OperacaoRequest operacaoRequest){
@@ -38,7 +38,12 @@ public class OperacaoService {
         contaEntity.setSaldo(saldo);
         contaEntity.setExtrato(extrato);
         contaRepository.save(contaEntity);
-        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato());
+        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
+    }
+
+    public OperacaoResponse saldo(OperacaoRequest operacaoRequest){
+        ContaEntity contaEntity = contaRepository.getById(operacaoRequest.getConta());
+        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
     }
 
 }
