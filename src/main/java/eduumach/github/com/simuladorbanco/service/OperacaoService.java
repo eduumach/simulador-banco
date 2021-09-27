@@ -46,4 +46,30 @@ public class OperacaoService {
         return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
     }
 
+    public OperacaoResponse transferancia(OperacaoRequest operacaoRequest){
+        if(!contaRepository.existsById(operacaoRequest.getContaDestino())){
+            throw new RuntimeException("Conta Destino não encontrada.");
+        }
+        ContaEntity contaEntity = contaRepository.getById(operacaoRequest.getConta());
+        ContaEntity contaEntityDestino = contaRepository.getById(operacaoRequest.getContaDestino());
+        double saldo = contaEntity.getSaldo();
+        double saldoDestino = contaEntityDestino.getSaldo();
+        if(saldo <= operacaoRequest.getValor()){
+            throw new RuntimeException("Saldo insuficiente.");
+        }
+        saldo -= operacaoRequest.getValor();
+        saldoDestino += operacaoRequest.getValor();
+        String extrato = contaEntity.getExtrato();
+        String extratoDestino = contaEntityDestino.getExtrato();
+        extrato += "\n Tranferancia enviado a conta: " + operacaoRequest.getContaDestino() + " no valor de: R$" + operacaoRequest.getValor();
+        extratoDestino += "\n Tranferancia recebido da conta: " + operacaoRequest.getConta() + " no valor de: R$" + operacaoRequest.getValor();
+        contaEntity.setSaldo(saldo);
+        contaEntityDestino.setSaldo(saldoDestino);
+        contaEntity.setExtrato(extrato);
+        contaEntityDestino.setExtrato(extratoDestino);
+        contaRepository.save(contaEntity);
+        contaRepository.save(contaEntityDestino);
+        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
+    }
+
 }

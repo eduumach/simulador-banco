@@ -35,4 +35,11 @@ public class OperacaoController {
         OperacaoResponse operacaoResponse = operacaoService.saque(operacaoRequest);
         return new ResponseEntity<>(operacaoResponse, HttpStatus.ACCEPTED);
     }
+
+    @PostMapping("/transferencia")
+    public ResponseEntity<OperacaoResponse> transferencia(@RequestBody OperacaoRequest operacaoRequest){
+        OperacaoResponse operacaoResponse = operacaoService.transferancia(operacaoRequest);
+        return new ResponseEntity<>(operacaoResponse, HttpStatus.ACCEPTED);
+    }
+
 }
