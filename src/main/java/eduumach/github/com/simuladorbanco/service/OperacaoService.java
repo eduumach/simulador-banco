@@ -26,4 +26,19 @@ public class OperacaoService {
         return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato());
     }
 
+    public OperacaoResponse saque(OperacaoRequest operacaoRequest){
+        ContaEntity contaEntity = contaRepository.getById(operacaoRequest.getConta());
+        double saldo = contaEntity.getSaldo();
+        if(saldo <= operacaoRequest.getValor()){
+            throw new RuntimeException("Saldo insuficiente.");
+        }
+        saldo -= operacaoRequest.getValor();
+        String extrato = contaEntity.getExtrato();
+        extrato += "\n Saque no valor de: " + operacaoRequest.getValor();
+        contaEntity.setSaldo(saldo);
+        contaEntity.setExtrato(extrato);
+        contaRepository.save(contaEntity);
+        return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato());
+    }
+
 }

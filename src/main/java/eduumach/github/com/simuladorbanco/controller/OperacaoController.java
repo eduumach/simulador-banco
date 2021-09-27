@@ -23,4 +23,10 @@ public class OperacaoController {
         OperacaoResponse operacaoResponse = operacaoService.deposito(operacaoRequest);
         return new ResponseEntity<>(operacaoResponse, HttpStatus.ACCEPTED);
     }
+
+    @PostMapping("saque")
+    public ResponseEntity<OperacaoResponse> saque(@RequestBody OperacaoRequest operacaoRequest){
+        OperacaoResponse operacaoResponse = operacaoService.saque(operacaoRequest);
+        return new ResponseEntity<>(operacaoResponse, HttpStatus.ACCEPTED);
+    }
 }
