@@ -31,7 +31,9 @@ public class ClienteService {
         if(!contaRepository.existsById(clienteRequest.getIdConta())){
             throw new RuntimeException("Conta não existe.");
         }else if (clienteRepository.findByCpf(clienteRequest.getCpf()) == null){
-            throw  new RuntimeException("Cria um cliente.");
+            throw new RuntimeException("Cria um cliente.");
+        }else if (clienteRepository.findByCpf(clienteRequest.getCpf()).getConta() != null){
+            throw new RuntimeException("Conta já adicionada a cliente.");
         }
         ContaEntity contaEntity = contaRepository.getById(clienteRequest.getIdConta());
         ClienteEntity clienteEntity = clienteRepository.findByCpf(clienteRequest.getCpf());
