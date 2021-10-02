@@ -1,7 +1,5 @@
 package eduumach.github.com.simuladorbanco.controller;
 
-import eduumach.github.com.simuladorbanco.domain.Dados;
-import eduumach.github.com.simuladorbanco.model.Cliente;
 import eduumach.github.com.simuladorbanco.request.ClienteRequest;
 import eduumach.github.com.simuladorbanco.response.ClienteResponse;
 import eduumach.github.com.simuladorbanco.response.ContaResponse;
@@ -11,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/contas")
