@@ -1,6 +1,7 @@
 package eduumach.github.com.simuladorbanco.controller;
 
 import eduumach.github.com.simuladorbanco.request.OperacaoRequest;
+import eduumach.github.com.simuladorbanco.request.TransferenciaRequest;
 import eduumach.github.com.simuladorbanco.response.OperacaoResponse;
 import eduumach.github.com.simuladorbanco.service.OperacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class OperacaoController {
     }
 
     @PostMapping("/transferencia")
-    public ResponseEntity<OperacaoResponse> transferencia(@RequestBody OperacaoRequest operacaoRequest){
-        OperacaoResponse operacaoResponse = operacaoService.transferancia(operacaoRequest);
+    public ResponseEntity<OperacaoResponse> transferencia(@RequestBody TransferenciaRequest transferenciaRequest){
+        OperacaoResponse operacaoResponse = operacaoService.transferancia(transferenciaRequest);
         return new ResponseEntity<>(operacaoResponse, HttpStatus.ACCEPTED);
     }
 

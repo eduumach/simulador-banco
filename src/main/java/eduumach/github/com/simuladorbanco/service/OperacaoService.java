@@ -4,6 +4,7 @@ import eduumach.github.com.simuladorbanco.entity.ContaEntity;
 import eduumach.github.com.simuladorbanco.repository.ClienteRepository;
 import eduumach.github.com.simuladorbanco.repository.ContaRepository;
 import eduumach.github.com.simuladorbanco.request.OperacaoRequest;
+import eduumach.github.com.simuladorbanco.request.TransferenciaRequest;
 import eduumach.github.com.simuladorbanco.response.OperacaoResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,23 +47,23 @@ public class OperacaoService {
         return new OperacaoResponse(contaEntity.getId(), contaEntity.getExtrato(), contaEntity.getSaldo());
     }
 
-    public OperacaoResponse transferancia(OperacaoRequest operacaoRequest){
-        if(!contaRepository.existsById(operacaoRequest.getContaDestino())){
+    public OperacaoResponse transferancia(TransferenciaRequest transferenciaRequest){
+        if(!contaRepository.existsById(transferenciaRequest.getIdContaDestino())){
             throw new RuntimeException("Conta Destino não encontrada.");
         }
-        ContaEntity contaEntity = contaRepository.getById(operacaoRequest.getConta());
-        ContaEntity contaEntityDestino = contaRepository.getById(operacaoRequest.getContaDestino());
+        ContaEntity contaEntity = contaRepository.getById(transferenciaRequest.getIdConta());
+        ContaEntity contaEntityDestino = contaRepository.getById(transferenciaRequest.getIdContaDestino());
         double saldo = contaEntity.getSaldo();
         double saldoDestino = contaEntityDestino.getSaldo();
-        if(saldo <= operacaoRequest.getValor()){
+        if(saldo <= transferenciaRequest.getValor()){
             throw new RuntimeException("Saldo insuficiente.");
         }
-        saldo -= operacaoRequest.getValor();
-        saldoDestino += operacaoRequest.getValor();
+        saldo -= transferenciaRequest.getValor();
+        saldoDestino += transferenciaRequest.getValor();
         String extrato = contaEntity.getExtrato();
         String extratoDestino = contaEntityDestino.getExtrato();
-        extrato += "\n Tranferancia enviado a conta: " + operacaoRequest.getContaDestino() + " no valor de: R$" + operacaoRequest.getValor();
-        extratoDestino += "\n Tranferancia recebido da conta: " + operacaoRequest.getConta() + " no valor de: R$" + operacaoRequest.getValor();
+        extrato += "\n Tranferancia enviado a conta: " + transferenciaRequest.getIdContaDestino() + " no valor de: R$" + transferenciaRequest.getValor();
+        extratoDestino += "\n Tranferancia recebido da conta: " + transferenciaRequest.getIdConta() + " no valor de: R$" + transferenciaRequest.getValor();
         contaEntity.setSaldo(saldo);
         contaEntityDestino.setSaldo(saldoDestino);
         contaEntity.setExtrato(extrato);
