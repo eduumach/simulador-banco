@@ -22,7 +22,7 @@ public class ClienteService {
         if(clienteRepository.findByCpf(clienteRequest.getCpf()) != null){
             throw new RuntimeException("Cpf já cadastrado.");
         }
-        ClienteEntity clienteEntity = new ClienteEntity(clienteRequest.getCpf(), clienteRequest.getNome());
+        ClienteEntity clienteEntity = clienteRequest.requestObject();
         clienteEntity = clienteRepository.save(clienteEntity);
         return new ClienteResponse(clienteEntity.getId(), clienteEntity.getCpf(), clienteEntity.getNome());
     }

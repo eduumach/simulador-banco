@@ -1,5 +1,6 @@
 package eduumach.github.com.simuladorbanco.request;
 
+import eduumach.github.com.simuladorbanco.entity.ClienteEntity;
 import eduumach.github.com.simuladorbanco.entity.ContaEntity;
 
 public class ClienteRequest {
@@ -39,4 +40,12 @@ public class ClienteRequest {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public ClienteEntity requestObject(){
+        ClienteEntity clienteEntity = new ClienteEntity();
+        clienteEntity.setCpf(this.cpf);
+        clienteEntity.setNome(this.nome);
+        return clienteEntity;
+    }
+
 }
