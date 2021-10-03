@@ -30,7 +30,7 @@ public class OperacaoService {
     public OperacaoResponse saque(OperacaoRequest operacaoRequest){
         ContaEntity contaEntity = contaRepository.getById(operacaoRequest.getConta());
         double saldo = contaEntity.getSaldo();
-        if(saldo <= operacaoRequest.getValor()){
+        if(saldo < operacaoRequest.getValor()){
             throw new RuntimeException("Saldo insuficiente.");
         }
         saldo -= operacaoRequest.getValor();
@@ -55,7 +55,7 @@ public class OperacaoService {
         ContaEntity contaEntityDestino = contaRepository.getById(transferenciaRequest.getIdContaDestino());
         double saldo = contaEntity.getSaldo();
         double saldoDestino = contaEntityDestino.getSaldo();
-        if(saldo <= transferenciaRequest.getValor()){
+        if(saldo < transferenciaRequest.getValor()){
             throw new RuntimeException("Saldo insuficiente.");
         }
         saldo -= transferenciaRequest.getValor();
