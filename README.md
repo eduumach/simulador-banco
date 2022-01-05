@@ -1,62 +1,91 @@
 
-## API Simulação Banco
+# Simulador Banco
 
-#### GET Extrato
+Com esse projeto tenho o intuito de compartilhar meu conhecimento e estudo sobre java e rest api.
 
-```
-GET /contas/extrato/${id}
-```
 
-Mostrara todo historico de transação de uma conta.
+## API
 
-#### GET Saldo
+#### Criar cliente
 
-```
-GET /contas/saldo/${id}
+```http
+  POST /clientes/criar
 ```
 
-Mostrara o saldo da conta.
+| Parameter | Type     | Description            |
+|:----------|:---------|:-----------------------|
+| `cpf`     | `string` | **Obrigatório**. cpf.  |
+| `name`    | `string` | **Obrigatório**. nome. |
 
-#### POST Abrir conta
+#### Associar conta
 
-``` 
-POST /contas/abrir  
+```http
+  POST /clientes/associaconta
 ```
 
-Abrira uma nova conta.
+| Parameter | Type     | Description                                       |
+|:----------|:---------|:--------------------------------------------------|
+| `cpf`     | `string` | **Obrigatório**. CPF do cliente.                  |
+| `idConta` | `string` | **Obrigatório**. Id da conta que deseja associar. |
 
-| Parametros | Tipo     | Descrição                       |
-| :--------- | :------- | :------------------------------ |
-| `cpf`      | `string` | **Obrigatorio**. CPF do cliente |
-| `nome`     | `string` | **Obrigatorio**. Nome do cliente|
+#### Criar conta
 
-#### POST deposito
-
+```http
+  POST /contas/criar
 ```
-POST /contas/deposito/${id}
-```
+Cria uma conta.
 
-| Parametros | Tipo     | Descrição                          | 
-| :--------- | :------- | :--------------------------------- |
-| `valor`    | `double` | **Obrigatorio**. Valor de deposito |
+#### Associar cliente
 
-#### POST Saque
-
-```
-POST /contas/saque/${id}
+```http
+  POST /contas/associacliente
 ```
 
-| Parametros | Tipo     | Descrição                       | 
-| :--------- | :------- | :------------------------------ |
-| `valor`    | `double` | **Obrigatorio**. Valor de saque |
+| Parameter | Type     | Description                                       |
+|:----------|:---------|:--------------------------------------------------|
+| `cpf`     | `string` | **Obrigatório**. CPF do cliente.                  |
+| `idConta` | `string` | **Obrigatório**. Id da conta que deseja associar. |
 
-#### POST Transferencia
+#### Operação saldo
 
+```http
+  POST /operacao/saldo
 ```
-POST /contas/transferencia/${id}
+
+| Parameter | Type   | Description                   |
+|:----------|:-------|:------------------------------|
+| `conta`   | `Long` | **Obrigatório**. Id da conta. |
+
+#### Operação deposito
+
+```http
+  POST /operacao/deposito
 ```
 
-| Parametros | Tipo     | Descrição                              | 
-| :--------- | :------- | :------------------------------------- |
-| `valor`    | `double` | **Obrigatorio**. Valor de tranfarencia |
-| `idDestino`| `int`    | **Obrigatorio**. Id da conta de destino|
+| Parameter | Type     | Description                         |
+|:----------|:---------|:------------------------------------|
+| `conta`   | `Long`   | **Obrigatório**. Id da conta.       |
+| `valor`   | `double` | **Obrigatório**. Valor do deposito. |
+
+#### Operação saque
+
+```http
+  POST /operacao/saque
+```
+
+| Parameter | Type     | Description                      |
+|:----------|:---------|:---------------------------------|
+| `conta`   | `Long`   | **Obrigatório**. Id da conta.    |
+| `valor`   | `double` | **Obrigatório**. Valor do saque. |
+
+#### Operação transferencia
+
+```http
+  POST /operacao/transferencia
+```
+
+| Parameter        | Type     | Description                              |
+|:-----------------|:---------|:-----------------------------------------|
+| `idConta`        | `Long`   | **Obrigatório**. Id da conta.            |
+| `idContaDestino` | `Long`   | **Obrigatório**. Id da conta destino.    |
+| `valor`          | `double` | **Obrigatório**. Valor da transferencia. |
