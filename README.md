@@ -9,7 +9,7 @@ Com esse projeto tenho o intuito de compartilhar meu conhecimento e estudo sobre
 #### Criar cliente
 
 ```http
-  POST /clientes/criar
+POST /clientes/criar
 ```
 
 | Parameter | Type     | Description            |
@@ -20,7 +20,7 @@ Com esse projeto tenho o intuito de compartilhar meu conhecimento e estudo sobre
 #### Associar conta
 
 ```http
-  POST /clientes/associaconta
+POST /clientes/associaconta
 ```
 
 | Parameter | Type     | Description                                       |
@@ -31,14 +31,14 @@ Com esse projeto tenho o intuito de compartilhar meu conhecimento e estudo sobre
 #### Criar conta
 
 ```http
-  POST /contas/criar
+POST /contas/criar
 ```
 Cria uma conta.
 
 #### Associar cliente
 
 ```http
-  POST /contas/associacliente
+POST /contas/associacliente
 ```
 
 | Parameter | Type     | Description                                       |
@@ -49,7 +49,7 @@ Cria uma conta.
 #### Operação saldo
 
 ```http
-  POST /operacao/saldo
+GET /operacao/saldo
 ```
 
 | Parameter | Type   | Description                   |
@@ -59,7 +59,7 @@ Cria uma conta.
 #### Operação deposito
 
 ```http
-  POST /operacao/deposito
+POST /operacao/deposito
 ```
 
 | Parameter | Type     | Description                         |
@@ -70,7 +70,7 @@ Cria uma conta.
 #### Operação saque
 
 ```http
-  POST /operacao/saque
+POST /operacao/saque
 ```
 
 | Parameter | Type     | Description                      |
@@ -81,7 +81,7 @@ Cria uma conta.
 #### Operação transferencia
 
 ```http
-  POST /operacao/transferencia
+POST /operacao/transferencia
 ```
 
 | Parameter        | Type     | Description                              |
